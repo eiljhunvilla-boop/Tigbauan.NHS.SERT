@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tigbauan NHS SERT</title>
+  <title>Striped Header — SERT Theme</title>
   <style>
     :root{
       --top-band: #fa7d39; 
@@ -84,7 +84,6 @@
       min-height:8px;
     }
 
-    /* Brand wrapper with upward move */
     .brand-wrapper {
       display: flex;
       flex-direction: column;
@@ -95,7 +94,6 @@
       gap: -10px;
     }
 
-    /* Circle logo above text */
     .logo-circle{
       width:120px;
       height:120px;
@@ -118,14 +116,12 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Glow and move effect on hover */
     .header-logo-circle:hover,
     .logo-circle:hover{
       transform: translateY(-6px) scale(1.05);
       box-shadow: 0 0 25px 5px rgba(255,165,0,0.9);
     }
 
-    /* Brand text with white color + black outline */
     .brand h1,
     .brand h2,
     .brand p{
@@ -159,7 +155,6 @@
       margin:0;
     }
 
-    /* Main content */
     .main{
       padding:26px;
       display:grid;
@@ -177,6 +172,7 @@
       justify-content:center;
       gap:50px;
       margin-top:10px;
+      flex-wrap: wrap; /* allows mobile stacking */
     }
 
     .rect{
@@ -201,20 +197,16 @@
       border: 3px solid rgba(255,255,255,0.7);
     }
 
-    /* Individual pillar backgrounds */
     .rect:nth-child(1) {
       background: url('images/SERT MISSION.jpg') center/cover no-repeat;
     }
-
     .rect:nth-child(2) {
       background: url('images/SERT ABOUT.jpg') center/cover no-repeat;
     }
-
     .rect:nth-child(3) {
       background: url('images/SERT VISION.jpg') center/cover no-repeat;
     }
 
-    /* Blur + darken overlay */
     .rect::before {
       content: '';
       position: absolute;
@@ -223,128 +215,85 @@
       z-index: 1;
     }
 
-    /* Text pop-up - separate positioning & font size for each pillar */
+    /* Individual text pop-ups */
     .rect:nth-child(1) p {
-      position: center;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      font-size: 24px;
-      line-height: 1.5;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s ease;
-      color: #fff;
-      text-shadow: 0 0 6px rgba(0,0,0,0.8);
-      z-index: 2;
+      bottom: 20px; left:20px; right:20px;
+      font-size:24px; line-height:1.5;
+      opacity:0; transform: translateY(20px);
+      transition: all 0.4s ease; color:#fff; text-shadow:0 0 6px rgba(0,0,0,0.8);
+      z-index:2;
     }
-
     .rect:nth-child(2) p {
-      position: center;
-      bottom: 25px;
-      left: 15px;
-      right: 15px;
-      font-size: 16.5px;
-      line-height: 1.6;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s ease;
-      color: #fff;
-      text-shadow: 0 0 6px rgba(0,0,0,0.8);
-      z-index: 2;
+      bottom: 25px; left:15px; right:15px;
+      font-size:16.5px; line-height:1.6;
+      opacity:0; transform: translateY(20px);
+      transition: all 0.4s ease; color:#fff; text-shadow:0 0 6px rgba(0,0,0,0.8);
+      z-index:2;
     }
-
     .rect:nth-child(3) p {
-      position: center;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      font-size: 25px;
-      line-height: 1.5;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s ease;
-      color: #fff;
-      text-shadow: 0 0 6px rgba(0,0,0,0.8);
-      z-index: 2;
+      bottom:20px; left:20px; right:20px;
+      font-size:25px; line-height:1.5;
+      opacity:0; transform: translateY(20px);
+      transition: all 0.4s ease; color:#fff; text-shadow:0 0 6px rgba(0,0,0,0.8);
+      z-index:2;
     }
 
-    /* Hover effects */
     .rect:hover {
       border-color: #fff;
       transform: translateY(-6px) scale(1.03);
       box-shadow:0 10px 22px rgba(255,100,60,0.8);
     }
-
     .rect:hover::before {
       backdrop-filter: blur(4px);
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0,0,0,0.3);
     }
-
     .rect:hover p {
-      opacity: 1;
-      transform: translateY(0);
+      opacity:1; transform: translateY(0);
     }
 
     /* Bottom rectangle */
     .bottom-rect {
-      width: 960px;
-      max-width: 95%;
-      height: 500px;
-      margin: 30px auto 0 auto;
+      width:960px; max-width:95%;
+      height:500px;
+      margin:30px auto 0 auto;
       background: url('images/SERT ALERTO.jpg') center/cover no-repeat;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      font-weight:700;
+      color:#fff;
+      text-align:center;
+      padding:20px;
       position: relative;
       overflow: hidden;
-      border: 3px solid rgba(255,255,255,0.7);
+      border:3px solid rgba(255,255,255,0.7);
       box-shadow: 0 6px 18px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-      cursor: pointer;
-      text-decoration: none;
+      cursor:pointer;
     }
-
     .bottom-rect::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      content:'';
+      position:absolute; top:0; left:0; right:0; bottom:0;
       transition: backdrop-filter 0.4s ease, background-color 0.4s ease;
-      z-index: 1;
+      z-index:1;
     }
-
     .bottom-rect:hover::before {
       backdrop-filter: blur(4px);
       background-color: rgba(0,0,0,0.3);
     }
-
     .bottom-rect p {
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(20px);
+      position:relative; z-index:2; opacity:0;
       transition: all 0.4s ease;
-      color: #fff;
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
     }
-
     .bottom-rect:hover p {
-      opacity: 1;
-      transform: translateY(0);
+      opacity:1;
     }
-
     .bottom-rect:hover {
       transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 10px 22px rgba(255,100,60,0.8);
-      border-color: #fff;
+      box-shadow:0 10px 22px rgba(255,100,60,0.8);
+      border-color:#fff;
     }
 
     @media(max-width:720px){
@@ -420,11 +369,10 @@
         </div>
       </div>
 
-      <!-- Bottom rectangle -->
-      <a href="https://www.facebook.com/profile.php?id=61558330837112#" target="_blank" class="bottom-rect">
+      <!-- Bottom rectangle with clickable Facebook link -->
+      <a href="https://www.facebook.com/" target="_blank" class="bottom-rect">
         <p>CLICK AND CHECK OUT OUR FACEBOOK PAGE!</p>
       </a>
-
     </main>
   </div>
 </body>
