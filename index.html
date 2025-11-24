@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tigbauan NHS SERT</title>
+  <style>
+    :root{
+      --top-band: #fa7d39; 
+      --second-band: #ff6a1c; 
+      --third-band: #000000; 
+      --bottom-band: #f3f4f5; 
+      --header-height: 260px; 
+      --page-padding: 20px;
+      --fw-bold: 700;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bottom-band) 0%, #ffffff 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:var(--page-padding);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:24px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:none;
+      background:#ffffff;
+      border-radius:0;
+      box-shadow: 0 8px 30px rgba(15,20,30,0.08);
+      overflow:hidden;
+      min-height:1500px;
+    }
+
+    /* Header with four stacked bands */
+    .header{
+      display:flex;
+      flex-direction:column;
+      height:var(--header-height);
+      min-height:150px;
+      width:100%;
+      position:relative;
+    }
+
+    .stripe{
+      width:100%;
+    }
+
+    .stripe.top{
+      background:var(--top-band);
+      height:28%; 
+      min-height:40px;
+    }
+
+    .stripe.second{
+      background: var(--second-band);
+      height:60%;
+      min-height:120px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      gap:12px;
+      position:relative;
+    }
+
+    .stripe.third{
+      background:var(--third-band);
+      height:6%;
+      min-height:8px;
+    }
+
+    .stripe.bottom{
+      background:var(--bottom-band);
+      height:6%;
+      min-height:8px;
+    }
+
+    /* Brand wrapper with upward move */
+    .brand-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      top: -100px;
+      gap: -10px;
+    }
+
+    /* Circle logo above text */
+    .logo-circle{
+      width:120px;
+      height:120px;
+      flex-shrink: 0;
+      border-radius:50%;
+      background: url(https://scontent.fceb6-1.fna.fbcdn.net/v/t39.30808-6/510491795_122191001594277694_6700610189467569343_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFgOqSf30OEwrOkeG2NH6UjbAtOBye4fNJsC04HJ7h80hfNKeGP0n46h7S6GWD2W7eNdCHSGEOjqFUPh2imLezp&_nc_ohc=XhcNsLGiyksQ7kNvwFSfLR5&_nc_oc=Adkh8TOztKY9tyw9Qkrxd74SovggJVMesCdEI4d3gGEi-wKv36lpPdGTnGQ2e9CtJ3k&_nc_zt=23&_nc_ht=scontent.fceb6-1.fna&_nc_gid=zpRdnxy0oAYtmy2VP_vKtg&oh=00_AfhfEnLOl4bqXLfp3ys08cw-Puak4tJ8wnG0NEK3HTZ-Vw&oe=692A19E0) center/cover no-repeat;
+      box-shadow: 0 0 20px rgba(255,255,255,0.6);
+      margin-bottom:16px; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-logo-circle{
+      width:120px;
+      height:120px;
+      flex-shrink: 0;
+      border-radius:50%;
+      background: url('https://scontent.fceb6-3.fna.fbcdn.net/v/t39.30808-6/491308961_1253078360159087_1300770392086105477_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFpNc49OhgZdmlo0NpLUd8Ate-SZO4Kzky175Jk7grOTGahqvCalXVihIV8rrx-LRKOKyaMAO3WWfGMoZXEmWnm&_nc_ohc=C6aeU9Zkx_MQ7kNvwEzfrOP&_nc_oc=Adk2m5j9q5VQBsnD_V2ZTq_t6NkvyGxAqCTNaGBmMGHLxOHWxD2W_Z7DQnDu-O5I_P8&_nc_zt=23&_nc_ht=scontent.fceb6-3.fna&_nc_gid=oEuq_-6FxwmJcgq-FL01tg&oh=00_AfgT74CA5nZfyFXhDtFz_mx7rqxB6O3M48kJ8jkYtvTUcA&oe=692A20D8') center/cover no-repeat;
+      box-shadow: 0 0 20px rgba(255,255,255,0.6);
+      margin-bottom:16px; 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Glow and move effect on hover */
+    .header-logo-circle:hover,
+    .logo-circle:hover{
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 0 25px 5px rgba(255,165,0,0.9);
+    }
+
+    /* Brand text with white color + black outline */
+    .brand h1,
+    .brand h2,
+    .brand p{
+      color: #fff;
+      text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    }
+
+    .brand h1{
+      font-size:30px;
+      text-transform:uppercase;
+      margin:0;
+      line-height:1.2;
+    }
+
+    .brand h2{
+      font-size:18px;
+      text-transform:uppercase;
+      margin:0;
+      line-height:1.2;
+    }
+
+    .brand p{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      opacity:0.92;
+      margin:0;
+    }
+
+    /* Main content */
+    .main{
+      padding:26px;
+      display:grid;
+      gap:18px;
+    }
+
+    .logo-holder{
+      display:flex;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    .rect-row{
+      display:flex;
+      justify-content:center;
+      gap:50px;
+      margin-top:10px;
+    }
+
+    .rect{
+      width:300px;
+      height:500px;
+      background:#ff6a34;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      font-weight:700;
+      color:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,0.2);
+      transition:0.25s;
+      cursor:pointer;
+      flex-direction:column;
+      padding:12px;
+      text-align:center;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.7);
+    }
+
+    /* Individual pillar backgrounds */
+    .rect:nth-child(1) {
+      background: url('images/SERT MISSION.jpg') center/cover no-repeat;
+    }
+
+    .rect:nth-child(2) {
+      background: url('images/SERT ABOUT.jpg') center/cover no-repeat;
+    }
+
+    .rect:nth-child(3) {
+      background: url('images/SERT VISION.jpg') center/cover no-repeat;
+    }
+
+    /* Blur + darken overlay */
+    .rect::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      transition: backdrop-filter 0.4s ease, background-color 0.4s ease;
+      z-index: 1;
+    }
+
+    /* Text pop-up - separate positioning & font size for each pillar */
+    .rect:nth-child(1) p {
+      position: center;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      font-size: 24px;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(0,0,0,0.8);
+      z-index: 2;
+    }
+
+    .rect:nth-child(2) p {
+      position: center;
+      bottom: 25px;
+      left: 15px;
+      right: 15px;
+      font-size: 16.5px;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(0,0,0,0.8);
+      z-index: 2;
+    }
+
+    .rect:nth-child(3) p {
+      position: center;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      font-size: 25px;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(0,0,0,0.8);
+      z-index: 2;
+    }
+
+    /* Hover effects */
+    .rect:hover {
+      border-color: #fff;
+      transform: translateY(-6px) scale(1.03);
+      box-shadow:0 10px 22px rgba(255,100,60,0.8);
+    }
+
+    .rect:hover::before {
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .rect:hover p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Bottom rectangle */
+    .bottom-rect {
+      width: 960px;
+      max-width: 95%;
+      height: 500px;
+      margin: 30px auto 0 auto;
+      background: url('images/SERT ALERTO.jpg') center/cover no-repeat;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.7);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .bottom-rect::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      transition: backdrop-filter 0.4s ease, background-color 0.4s ease;
+      z-index: 1;
+    }
+
+    .bottom-rect:hover::before {
+      backdrop-filter: blur(4px);
+      background-color: rgba(0,0,0,0.3);
+    }
+
+    .bottom-rect p {
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .bottom-rect:hover p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bottom-rect:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 10px 22px rgba(255,100,60,0.8);
+      border-color: #fff;
+    }
+
+    @media(max-width:720px){
+      .rect-row{
+        flex-direction:column;
+        align-items:center;
+      }
+      .rect{
+        width:85%;
+        height:90px;
+        font-size:18px;
+      }
+      .bottom-rect{
+        width:90%;
+        height:150px;
+        font-size:16px;
+      }
+      .header-logo-circle{
+        width:60px;
+        height:60px;
+        margin-bottom:16px;
+      }
+      .brand h1{
+        font-size:16px;
+      }
+      .brand h2{
+        font-size:14px;
+      }
+      .brand p{
+        font-size:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header class="header" aria-label="Striped header with four bands">
+      <div class="stripe top" aria-hidden="true"></div>
+      <div class="stripe second">
+        <a href="#" class="home-btn">HOME</a>
+        <div class="brand-wrapper">
+          <div class="header-logo-circle"></div>
+          <div class="brand">
+            <h1>TIGBAUAN NATIONAL HIGHSCHOOL</h1>
+            <h2>SCHOOL EMERGENCY RESPONSE TEAM</h2>
+            <p>PREPAREDNESS • SAFETY • SERVICE</p>
+          </div>
+        </div>
+      </div>
+      <div class="stripe third" aria-hidden="true"></div>
+      <div class="stripe bottom" aria-hidden="true"></div>
+    </header>
+
+    <main class="main">
+      <div class="logo-holder">
+        <div class="logo-circle"></div>
+      </div>
+      <div class="rect-row">
+        <div class="rect">
+          <p>
+            To promote safety and preparedness in our school by training student responders, leading emergency drills, raising awareness about disasters, and supporting environmental activities that help reduce risks and protect our community.
+          </p>
+        </div>
+        <div class="rect">
+          <p>
+            The School Emergency Response Team (SERT) is a dedicated group committed to promoting safety, preparedness, and well-being within both the school and the wider community. SERT trains its members in emergency response, first aid, disaster management, and crisis intervention, ensuring readiness to assist not only students and staff but also community members during emergencies. Through proactive planning, education, and rapid response, SERT plays a vital role in protecting lives and fostering a culture of safety beyond the school grounds.
+          </p>
+        </div>
+        <div class="rect">
+          <p>
+            A well-prepared and resilient school community where students are empowered, trained, and united to respond to emergencies, reduce risks, and promote a culture of safety and responsibility.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom rectangle -->
+      <a href="https://www.facebook.com/profile.php?id=61558330837112#" target="_blank" class="bottom-rect">
+        <p>CLICK AND CHECK OUT OUR FACEBOOK PAGE!</p>
+      </a>
+
+    </main>
+  </div>
+</body>
+</html>
